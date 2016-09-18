@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.zyongjun.site/2016/09/12/unittest1/</loc>
+    
+    <lastmod>2016-09-18T06:27:05.968Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.zyongjun.site/categories/index.html</loc>
     
     <lastmod>2016-09-18T04:36:45.691Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://www.zyongjun.site/2016/09/14/waytopython/</loc>
     
     <lastmod>2016-09-18T04:36:45.689Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.zyongjun.site/2016/09/12/unittest1/</loc>
-    
-    <lastmod>2016-09-18T04:36:45.688Z</lastmod>
     
   </url>
   
