@@ -5,8 +5,6 @@
     
     
     
-    
-    
   <url>
     <loc>http://www.zyongjun.site/2016/09/14/waytopython/</loc>
     <lastmod>2016-09-18T04:36:45.689Z</lastmod>
@@ -50,26 +48,6 @@
 
     
   <url>
-    <loc>http://www.zyongjun.site/2016/09/17/toolscollection/</loc>
-    <lastmod>2016-09-18T04:36:45.683Z</lastmod>
-    <data>
-        <display>
-        <title>那些好用的工具合集（持续更新）</title>
-        <pubTime>2016-09-17T15:50:07.000Z</pubTime>
-        
-        <tag>工具</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具" url="http://www.zyongjun.site/categories/%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.zyongjun.site/2016/09/15/bitmask-android/</loc>
     <lastmod>2016-09-18T04:36:45.683Z</lastmod>
     <data>
@@ -85,6 +63,26 @@
            
              
               <breadCrumb title="Android" url="http://www.zyongjun.site/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.zyongjun.site/2016/09/17/toolscollection/</loc>
+    <lastmod>2016-09-18T04:36:45.683Z</lastmod>
+    <data>
+        <display>
+        <title>那些好用的工具合集（持续更新）</title>
+        <pubTime>2016-09-17T15:50:07.000Z</pubTime>
+        
+        <tag>工具</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="http://www.zyongjun.site/categories/%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
