@@ -10,6 +10,7 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="baidu-site-verification" content="ScevMQDoYo" />
 
 
 
@@ -61,11 +62,11 @@
 <meta name="description" content="前言Android中做单元测试一直是永远的痛，最近研究了些项目，发现在这些项目中无论是单元测试还是做ui测试，不管是从代码简洁还是从项目结构上都非常值得学习，这里随便写下自己的总结。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 使用Mockito测试业务逻辑(unittest 之一)">
-<meta property="og:url" content="http://www.zyongjun.site/2016/09/12/unittest1/index.html">
-<meta property="og:site_name" content="zyongjun's blog">
+<meta property="og:url" content="http://www.windhike.cn/2016/09/12/unittest1/index.html">
+<meta property="og:site_name" content="windhike">
 <meta property="og:description" content="前言Android中做单元测试一直是永远的痛，最近研究了些项目，发现在这些项目中无论是单元测试还是做ui测试，不管是从代码简洁还是从项目结构上都非常值得学习，这里随便写下自己的总结。">
 <meta property="og:image" content="http://img.blog.csdn.net/20160527234157884">
-<meta property="og:updated_time" content="2016-09-18T06:27:05.968Z">
+<meta property="og:updated_time" content="2016-09-19T01:00:41.794Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 使用Mockito测试业务逻辑(unittest 之一)">
 <meta name="twitter:description" content="前言Android中做单元测试一直是永远的痛，最近研究了些项目，发现在这些项目中无论是单元测试还是做ui测试，不管是从代码简洁还是从项目结构上都非常值得学习，这里随便写下自己的总结。">
@@ -90,9 +91,10 @@
 
 
 
-  <link rel="canonical" href="http://www.zyongjun.site/2016/09/12/unittest1/"/>
+  <link rel="canonical" href="http://www.windhike.cn/2016/09/12/unittest1/"/>
 
-  <title> Android 使用Mockito测试业务逻辑(unittest 之一) | zyongjun's blog </title>
+
+  <title> Android 使用Mockito测试业务逻辑(unittest 之一) | windhike </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -133,7 +135,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">zyongjun's blog</span>
+      <span class="site-title">windhike</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -191,16 +193,6 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
           </a>
         </li>
       
@@ -355,7 +347,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public void test_multimode_WithFlag()&#123;</div><div class="line">        //multimode</div><div class="line">        mPresenter.animateWithMode(AnimatePresenter.STATE_MODE_MULTI_MASK);</div><div class="line">        mPresenter.animateImageByFlag(AnimatePresenter.ROTATION_MASK);</div><div class="line">        ArgumentCaptor&lt;Float&gt; rotaion = ArgumentCaptor.forClass(Float.class);</div><div class="line">        verify(mCallback,atLeast(1)).rotationView(rotaion.capture());</div><div class="line">        assertEquals((Float) 30.0f,rotaion.getValue());</div><div class="line"></div><div class="line">        mPresenter.animateImageByFlag(AnimatePresenter.TRANSITIONX_MASK);</div><div class="line">        ArgumentCaptor&lt;Float&gt; traistionX = ArgumentCaptor.forClass(Float.class);</div><div class="line">        verify(mCallback,atLeast(1)).translationXView(traistionX.capture());</div><div class="line">        assertEquals((Float) 200f,traistionX.getValue());</div><div class="line"></div><div class="line">        mPresenter.animateImageByFlag(AnimatePresenter.TRANSITIONY_MASK);</div><div class="line">        ArgumentCaptor&lt;Float&gt; traistionY = ArgumentCaptor.forClass(Float.class);</div><div class="line">        verify(mCallback,atLeast(1)).translationYView(traistionY.capture());</div><div class="line">        assertEquals((Float) 200f,traistionY.getValue());</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p>运行测试：<br><img src="http://img.blog.csdn.net/20160527234157884" alt="单元测试"></p>
 <h3 id="后话"><a href="#后话" class="headerlink" title="后话"></a><strong>后话</strong></h3><p>571ms，几乎点运行就出来结果，而且测试代码很简单，提前写好测试用来验证程序比在机器上不停的运行效率不可同日而语。而且只要接口没变，即便ui变化，测试代码依然可用。所以单元测试对于开发效率的提升，代码质量保证很有必要的。</p>
-<p>以上，谢谢大家。</p>
+<p>以上，祝编程愉快 :)<br><br>感谢阅读此文章，如果此文章对你有用或者你有任何疑问和意见，请在下方留言或者在<a href="https://github.com/zyongjun" target="_blank" rel="external">github</a>上fork我,你的鼓励对我有非凡的意义。</p>
 
       
     </div>
@@ -364,7 +356,7 @@
       
         
 <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/uploads/qrcode_wechat.jpg" alt="zyongjun wechat" style="width: 200px; max-width: 100%;"/>
+    <img id="wechat_subscriber_qcode" src="/uploads/qrcode_wechat.jpg" alt="windhike wechat" style="width: 200px; max-width: 100%;"/>
     <div>关注我的公众号，每周推送更多干货</div>
 </div>
 
@@ -384,7 +376,7 @@
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="https://mobilecodec.alipay.com/show.htm?code=aex05174te1n021xucsfnfd&picSize=430" alt="zyongjun Alipay"/>
+          <img id="alipay_qr" src="https://mobilecodec.alipay.com/show.htm?code=aex05174te1n021xucsfnfd&picSize=430" alt="windhike Alipay"/>
           <p>支付宝打赏</p>
         </div>
       
@@ -443,7 +435,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/09/12/unittest1/"
-           data-title="Android 使用Mockito测试业务逻辑(unittest 之一)" data-url="http://www.zyongjun.site/2016/09/12/unittest1/">
+           data-title="Android 使用Mockito测试业务逻辑(unittest 之一)" data-url="http://www.windhike.cn/2016/09/12/unittest1/">
       </div>
     
   </div>
@@ -481,14 +473,14 @@
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/face.jpg"
-               alt="zyongjun" />
-          <p class="site-author-name" itemprop="name">zyongjun</p>
+               alt="windhike" />
+          <p class="site-author-name" itemprop="name">windhike</p>
           <p class="site-description motion-element" itemprop="description">为者常成，行者常至</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -505,7 +497,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -593,7 +585,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">zyongjun</span>
+  <span class="author" itemprop="copyrightHolder">windhike</span>
   <span id="busuanzi_container_site_pv">
 		本站总访问量<span id="busuanzi_value_site_pv"></span>次
 	</span>

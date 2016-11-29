@@ -4,8 +4,168 @@
 
     
   <url>
-    <loc>http://www.zyongjun.site/2016/09/12/unittest1/</loc>
-    <lastmod>2016-09-18T06:27:05.968Z</lastmod>
+    <loc>http://www.windhike.cn/2016/11/27/rx-combining/</loc>
+    <lastmod>2016-11-29T05:47:00.150Z</lastmod>
+    <data>
+        <display>
+        <title>rx-combining</title>
+        <pubTime>2016-11-27T03:21:29.000Z</pubTime>
+        
+        <tag>rxJava</tag>
+         
+        <tag>rxAndroid</tag>
+         
+        <tag>combining</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://www.windhike.cn/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.windhike.cn/2016/10/25/rx-map/</loc>
+    <lastmod>2016-11-29T05:12:47.919Z</lastmod>
+    <data>
+        <display>
+        <title>rxJava之变换Obserables</title>
+        <pubTime>2016-10-25T15:59:15.000Z</pubTime>
+        
+        <tag>rxJava</tag>
+         
+        <tag>rxAndroid</tag>
+         
+        <tag>map</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://www.windhike.cn/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.windhike.cn/2016/11/25/rx-filter/</loc>
+    <lastmod>2016-11-29T05:12:47.918Z</lastmod>
+    <data>
+        <display>
+        <title>rxJava 之filter</title>
+        <pubTime>2016-11-25T04:38:21.000Z</pubTime>
+        
+        <tag>rxJava</tag>
+         
+        <tag>rxAndroid</tag>
+         
+        <tag>filter</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://www.windhike.cn/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.windhike.cn/2016/09/20/channel/</loc>
+    <lastmod>2016-11-29T05:12:47.855Z</lastmod>
+    <data>
+        <display>
+        <title>Android使用脚本多渠道打包</title>
+        <pubTime>2016-09-20T11:52:42.000Z</pubTime>
+        
+        <tag>Android多渠道</tag>
+         
+        <tag>打包</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="http://www.windhike.cn/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.windhike.cn/2016/10/25/rxjava/</loc>
+    <lastmod>2016-11-23T10:52:02.492Z</lastmod>
+    <data>
+        <display>
+        <title>rxjava 之创建Observable</title>
+        <pubTime>2016-10-25T15:59:15.000Z</pubTime>
+        
+        <tag>rxJava</tag>
+         
+        <tag>rxAndroid</tag>
+         
+        <tag>map</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://www.windhike.cn/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.windhike.cn/2016/09/17/toolscollection/</loc>
+    <lastmod>2016-10-10T06:33:49.969Z</lastmod>
+    <data>
+        <display>
+        <title>那些好用的工具合集（持续更新）</title>
+        <pubTime>2016-09-17T15:50:07.000Z</pubTime>
+        
+        <tag>工具</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="http://www.windhike.cn/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.windhike.cn/2016/09/19/httptest/</loc>
+    <lastmod>2016-09-26T10:36:57.543Z</lastmod>
+    <data>
+        <display>
+        <title>网络测试服务httpbin</title>
+        <pubTime>2016-09-18T16:11:23.000Z</pubTime>
+        
+        <tag>工具</tag>
+         
+        <tag>网络测试</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="http://www.windhike.cn/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.windhike.cn/2016/09/12/unittest1/</loc>
+    <lastmod>2016-09-19T01:00:41.794Z</lastmod>
     <data>
         <display>
         <title>Android 使用Mockito测试业务逻辑(unittest 之一)</title>
@@ -18,29 +178,29 @@
          
            
              
-              <breadCrumb title="Android" url="http://www.zyongjun.site/categories/Android/"/>
+              <breadCrumb title="Android" url="http://www.windhike.cn/categories/Android/"/>
           
         </display>
     </data>
     </url>
 
     
-    
-    
   <url>
-    <loc>http://www.zyongjun.site/2016/09/14/waytopython/</loc>
-    <lastmod>2016-09-18T04:36:45.689Z</lastmod>
+    <loc>http://www.windhike.cn/2016/09/18/retrofit/</loc>
+    <lastmod>2016-09-19T01:00:41.793Z</lastmod>
     <data>
         <display>
-        <title>浅谈玩蛇的姿势（Python入门）</title>
-        <pubTime>2016-09-14T12:37:19.000Z</pubTime>
+        <title>retrofit2.0完全解析</title>
+        <pubTime>2016-09-18T15:18:48.000Z</pubTime>
         
-        <tag>Python</tag>
+        <tag>Android</tag>
+         
+        <tag>Retrofit</tag>
          
          
            
              
-              <breadCrumb title="Python" url="http://www.zyongjun.site/categories/Python/"/>
+              <breadCrumb title="Android" url="http://www.windhike.cn/categories/Android/"/>
           
         </display>
     </data>
@@ -48,28 +208,8 @@
 
     
   <url>
-    <loc>http://www.zyongjun.site/2016/09/17/toolscollection/</loc>
-    <lastmod>2016-09-18T04:36:45.683Z</lastmod>
-    <data>
-        <display>
-        <title>那些好用的工具合集（持续更新）</title>
-        <pubTime>2016-09-17T15:50:07.000Z</pubTime>
-        
-        <tag>工具</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具" url="http://www.zyongjun.site/categories/%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.zyongjun.site/2016/09/15/bitmask-android/</loc>
-    <lastmod>2016-09-18T04:36:45.683Z</lastmod>
+    <loc>http://www.windhike.cn/2016/09/15/bitmask-android/</loc>
+    <lastmod>2016-09-19T01:00:41.790Z</lastmod>
     <data>
         <display>
         <title>Android多状态组合之位运算（BitMask）</title>
@@ -82,7 +222,29 @@
          
            
              
-              <breadCrumb title="Android" url="http://www.zyongjun.site/categories/Android/"/>
+              <breadCrumb title="Android" url="http://www.windhike.cn/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+  <url>
+    <loc>http://www.windhike.cn/2016/09/14/waytopython/</loc>
+    <lastmod>2016-09-18T04:36:45.689Z</lastmod>
+    <data>
+        <display>
+        <title>浅谈玩蛇的姿势（Python入门）</title>
+        <pubTime>2016-09-14T12:37:19.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://www.windhike.cn/categories/Python/"/>
           
         </display>
     </data>
