@@ -59,16 +59,16 @@
 
 
 
-<meta name="description" content="这一节来了解如何变换Observable为我们需要的。">
+<meta name="description" content="rxjava 提供了丰富的错误处理丰富，根据需要可以统一处理错误。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="rxJava之变换Obserables">
-<meta property="og:url" content="http://www.windhike.cn/2016/10/25/rx-map/index.html">
+<meta property="og:title" content="rx之错误处理">
+<meta property="og:url" content="http://www.windhike.cn/2016/12/01/rx-error/index.html">
 <meta property="og:site_name" content="windhike">
-<meta property="og:description" content="这一节来了解如何变换Observable为我们需要的。">
-<meta property="og:updated_time" content="2016-11-29T05:12:47.919Z">
+<meta property="og:description" content="rxjava 提供了丰富的错误处理丰富，根据需要可以统一处理错误。">
+<meta property="og:updated_time" content="2016-12-01T05:31:46.824Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="rxJava之变换Obserables">
-<meta name="twitter:description" content="这一节来了解如何变换Observable为我们需要的。">
+<meta name="twitter:title" content="rx之错误处理">
+<meta name="twitter:description" content="rxjava 提供了丰富的错误处理丰富，根据需要可以统一处理错误。">
 
 
 
@@ -89,10 +89,10 @@
 
 
 
-  <link rel="canonical" href="http://www.windhike.cn/2016/10/25/rx-map/"/>
+  <link rel="canonical" href="http://www.windhike.cn/2016/12/01/rx-error/"/>
 
 
-  <title> rxJava之变换Obserables | windhike </title>
+  <title> rx之错误处理 | windhike </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -232,7 +232,7 @@
             
             
               
-                rxJava之变换Obserables
+                rx之错误处理
               
             
           </h1>
@@ -244,8 +244,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-25T23:59:15+08:00" content="2016-10-25">
-              2016-10-25
+            <time itemprop="dateCreated" datetime="2016-12-01T11:18:26+08:00" content="2016-12-01">
+              2016-12-01
             </time>
           </span>
 
@@ -274,8 +274,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/25/rx-map/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/25/rx-map/" itemprop="commentsCount"></span>
+                <a href="/2016/12/01/rx-error/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/rx-error/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -285,7 +285,7 @@
 
           
           
-             <span id="/2016/10/25/rx-map/" class="leancloud_visitors" data-flag-title="rxJava之变换Obserables">
+             <span id="/2016/12/01/rx-error/" class="leancloud_visitors" data-flag-title="rx之错误处理">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -307,24 +307,23 @@
       
 
       
-        <p>这一节来了解如何变换Observable为我们需要的。</p>
-<a id="more"></a>
-<h4 id="buffer"><a href="#buffer" class="headerlink" title="buffer"></a>buffer</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Observable.just(1,2,3,4,5,6,7,8,9)</div><div class="line">             //.buffer(2)</div><div class="line">             .buffer(2,3)</div><div class="line">             .subscribe(new Action1&lt;List&lt;Integer&gt;&gt;() &#123;</div><div class="line">                 @Override</div><div class="line">                 public void call(List&lt;Integer&gt; integers) &#123;</div><div class="line">                     print(&quot;==========&quot;+integers.toString());</div><div class="line">                 &#125;</div><div class="line">             &#125;);</div></pre></td></tr></table></figure>
-<p>一个参数： 一次缓存指定数据打包为列表发射出来<br>两个参数: 每隔后者个数据取前者个数据打包成列表发射出来</p>
-<p>其实两者调用的是同一个方法，一个参数相当于调用了buffer(count,count)</p>
-<h4 id="flagmap-与-flatmapiterable"><a href="#flagmap-与-flatmapiterable" class="headerlink" title="flagmap 与 flatmapiterable"></a>flagmap 与 flatmapiterable</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Observable.just(1,2,3,4,5,6,7,8,9)</div><div class="line">            .flatMap(new Func1&lt;Integer, Observable&lt;Integer&gt;&gt;() &#123;</div><div class="line">                @Override</div><div class="line">                public Observable&lt;Integer&gt; call(Integer integer) &#123;</div><div class="line">                    return Observable.just(integer);</div><div class="line">                &#125;</div><div class="line">            &#125;)</div><div class="line">            .subscribe(new Action1&lt;Integer&gt;() &#123;</div><div class="line">                @Override</div><div class="line">                public void call(Integer integer) &#123;</div><div class="line">                    print(&quot;------&quot;+integer);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div></pre></td></tr></table></figure>
-<p>flatmap 将目标observable的源数据转化为observable依次发射出来<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Observable.just(1,2,3,4,5,6,7,8,9)</div><div class="line">              .flatMapIterable(new Func1&lt;Integer, Iterable&lt;Integer&gt;&gt;() &#123;</div><div class="line">                  @Override</div><div class="line">                  public Iterable&lt;Integer&gt; call(Integer integer) &#123;</div><div class="line">                      print(&quot;----------&quot;+integer);</div><div class="line">                      List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();</div><div class="line">                      list.add(integer);</div><div class="line">                  &#125;</div><div class="line">              &#125;)</div><div class="line">              .subscribe(new Action1&lt;Integer&gt;() &#123;</div><div class="line">                  @Override</div><div class="line">                  public void call(Integer integer) &#123;</div><div class="line"></div><div class="line">                  &#125;</div><div class="line">              &#125;);</div></pre></td></tr></table></figure></p>
-<p>flatMapIterable 基本同flatMap，只是将源数据转化为Iterable对象发射出来</p>
-<h4 id="switchMap"><a href="#switchMap" class="headerlink" title="switchMap"></a>switchMap</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Observable.just(1,2,3,4,5,6)</div><div class="line">                .switchMap(new Func1&lt;Integer, Observable&lt;Integer&gt;&gt;() &#123;</div><div class="line">                    @Override</div><div class="line">                    public Observable&lt;Integer&gt; call(Integer integer) &#123;</div><div class="line">                        return Observable.just(integer).subscribeOn(Schedulers.newThread());</div><div class="line">                    &#125;</div><div class="line">                &#125;)</div></pre></td></tr></table></figure>
-<p>switchMap的用法和flatMap差不多，不过当源数据Observable发射一个数据项的时候，上一个Observable未订阅完成，测取消这个observable,停止监视这个obserable,转而监视新的数据项</p>
-<h4 id="groupBy"><a href="#groupBy" class="headerlink" title="groupBy"></a>groupBy</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">Observable.just(1,2,3,4,5,6,7,8,9)</div><div class="line">                .groupBy(new Func1&lt;Integer, Integer&gt;() &#123;</div><div class="line">                    @Override</div><div class="line">                    public Integer call(Integer integer) &#123;</div><div class="line">                        return integer%2;</div><div class="line">                    &#125;</div><div class="line">                &#125;)</div><div class="line">        .subscribe(new Action1&lt;GroupedObservable&lt;Integer, Integer&gt;&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public void call(GroupedObservable&lt;Integer, Integer&gt; result) &#123;</div><div class="line">//                print(&quot;=============&quot;+result.getKey());</div><div class="line">                if(result.getKey() == 0) &#123;</div><div class="line">                    result.subscribe(new Action1&lt;Integer&gt;() &#123;</div><div class="line">                        @Override</div><div class="line">                        public void call(Integer integer) &#123;</div><div class="line">                            print(&quot;=============&quot; + result.getKey() + &quot;---&quot; + integer);</div><div class="line">                        &#125;</div><div class="line">                    &#125;);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
-<p>groupBy根据call返回的key和数据Observable发射的integer打包成GroupedObservable发射</p>
-<h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Observable.just(1,2,3,4)</div><div class="line">                .map(new Func1&lt;Integer, Integer&gt;() &#123;</div><div class="line">                    @Override</div><div class="line">                    public Integer call(Integer integer) &#123;</div><div class="line">                        return integer*2;</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div></pre></td></tr></table></figure>
-<p>map类似flatMap，直接直接转换对象，而不是通过Observable转换<br>cast是map的一种实现，直接转换成类型，转换失败会报ClassCastException<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Observable.just(1,2,3)</div><div class="line">                .cast(Integer.class)</div></pre></td></tr></table></figure></p>
-<h4 id="scan"><a href="#scan" class="headerlink" title="scan"></a>scan</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Observable.just(1,2,3,4,5,6,7,8)</div><div class="line">               .scan(new Func2&lt;Integer, Integer, Integer&gt;() &#123;</div><div class="line">                   @Override</div><div class="line">                   public Integer call(Integer integer, Integer integer2) &#123;</div><div class="line">                       print(&quot;----&quot;+integer+&quot;---&quot;+integer2);</div><div class="line">                       return integer*integer2;</div><div class="line">                   &#125;</div><div class="line">               &#125;).subscribe(new Action1&lt;Integer&gt;() &#123;</div><div class="line">           @Override</div><div class="line">           public void call(Integer integer) &#123;</div><div class="line"></div><div class="line">           &#125;</div><div class="line">       &#125;);</div></pre></td></tr></table></figure>
-<p>call 中的变换结果作为第一个参数应用到下一个数据传入的运算中</p>
-<h4 id="window"><a href="#window" class="headerlink" title="window"></a>window</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Observable.just(1,2,3,4,5,6)</div><div class="line">                .window(2)</div><div class="line">                .subscribe(new Action1&lt;Observable&lt;Integer&gt;&gt;() &#123;</div><div class="line">                    @Override</div><div class="line">                    public void call(Observable&lt;Integer&gt; integerObservable) &#123;</div><div class="line">                        print(&quot;------call----&quot;);</div><div class="line">                        integerObservable.subscribe(new Action1&lt;Integer&gt;() &#123;</div><div class="line">                            @Override</div><div class="line">                            public void call(Integer integer) &#123;</div><div class="line">                                print(&quot;--------------&quot;+integer);</div><div class="line">                            &#125;</div><div class="line">                        &#125;);</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div></pre></td></tr></table></figure>
-<p>window与buffer类似，发射指定数目，跳过指定数目发射Observable，而不是List.  不仅可以根据数目来分组，也可以根据时间来分组。</p>
+        <p>rxjava 提供了丰富的错误处理丰富，根据需要可以统一处理错误。<br><a id="more"></a></p>
+<h4 id="catch"><a href="#catch" class="headerlink" title="catch"></a>catch</h4><p>这里先生成一个产生exception的Observable<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">private Observable&lt;Integer&gt; getErrorObservable() &#123;</div><div class="line">        return Observable.create(new Observable.OnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public void call(Subscriber&lt;? super Integer&gt; subscriber) &#123;</div><div class="line">                for (int i = 1;i&lt;6;i++) &#123;</div><div class="line">                    if (i!=2&amp;&amp;i != 4) &#123;</div><div class="line">                        subscriber.onNext(i);</div><div class="line">                    &#125; else &#123;</div><div class="line">                        subscriber.onError(new Throwable(&quot;on error happened&quot;));</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>onErrorReturn<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">getErrorObservable().onErrorReturn(new Func1&lt;Throwable, Integer&gt;() &#123;</div><div class="line">           @Override</div><div class="line">           public Integer call(Throwable throwable) &#123;</div><div class="line">               return 999;</div><div class="line">           &#125;</div><div class="line">       &#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>当错误发生的时候，会走onErrorReturn的call，使用返回的数据替换error的这次发射结果,然后马上终止，走onCompleted.</p>
+<ul>
+<li>onErrorResumeNext</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">getErrorObservable()</div><div class="line">//                .onErrorResumeNext(Observable.just(1,2,3))</div><div class="line">        .onErrorResumeNext(new Func1&lt;Throwable, Observable&lt;? extends Integer&gt;&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public Observable&lt;? extends Integer&gt; call(Throwable throwable) &#123;</div><div class="line">                return Observable.just(1,2,3);</div><div class="line">            &#125;</div><div class="line">        &#125;)</div></pre></td></tr></table></figure>
+<p>onErrorResumeNext:可以接收一个Observable或Func1,当exception发生的时候，会使用这个Observable替换源Observable继续发射数据。</p>
+<ul>
+<li>onExceptionResumeNext<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Observable.create(new Observable.OnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public void call(Subscriber&lt;? super Integer&gt; subscriber) &#123;</div><div class="line">                for (int i = 1;i&lt;6;i++) &#123;</div><div class="line">                    if (i == 3) &#123;</div><div class="line">                        subscriber.onError(new Throwable(&quot;on error happened&quot;));</div><div class="line">                    &#125; else if(i==2)&#123;</div><div class="line">                        subscriber.onError(new Exception(&quot;an exception happend&quot;));</div><div class="line">                    &#125;else&#123;</div><div class="line">                        subscriber.onNext(i);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;).onExceptionResumeNext(Observable.just(10,11))</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>onExceptionResumeNext接收一备用的Observable,与onErrorResumeNext类似，不过只有error类型是Exception的时候才会使用备用Observable，其他错误类型如Throwable则会走subscriber的onError,</p>
 
       
     </div>
@@ -372,8 +371,6 @@
           
             <a href="/tags/rxAndroid/" rel="tag">#rxAndroid</a>
           
-            <a href="/tags/map/" rel="tag">#map</a>
-          
         </div>
       
 
@@ -381,17 +378,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/25/rxjava/" rel="next" title="rxjava 之创建Observable">
-                <i class="fa fa-chevron-left"></i> rxjava 之创建Observable
+              <a href="/2016/11/27/rx-combining/" rel="next" title="rxJava之combining">
+                <i class="fa fa-chevron-left"></i> rxJava之combining
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/25/rx-filter/" rel="prev" title="rxJava 之filter">
-                rxJava 之filter <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -417,8 +410,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/25/rx-map/"
-           data-title="rxJava之变换Obserables" data-url="http://www.windhike.cn/2016/10/25/rx-map/">
+      <div class="ds-thread" data-thread-key="2016/12/01/rx-error/"
+           data-title="rx之错误处理" data-url="http://www.windhike.cn/2016/12/01/rx-error/">
       </div>
     
   </div>
@@ -543,7 +536,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#buffer"><span class="nav-number">1.</span> <span class="nav-text">buffer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flagmap-与-flatmapiterable"><span class="nav-number">2.</span> <span class="nav-text">flagmap 与 flatmapiterable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#switchMap"><span class="nav-number">3.</span> <span class="nav-text">switchMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#groupBy"><span class="nav-number">4.</span> <span class="nav-text">groupBy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-number">5.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scan"><span class="nav-number">6.</span> <span class="nav-text">scan</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#window"><span class="nav-number">7.</span> <span class="nav-text">window</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#catch"><span class="nav-number">1.</span> <span class="nav-text">catch</span></a></li></ol></div>
             
           </div>
         </section>
