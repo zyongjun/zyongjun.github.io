@@ -43,8 +43,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="张勇军, windhike, 博客" />
-
+  <meta name="keywords" content="rxJava,rxAndroid,windhike,操作符" />
 
 
 
@@ -59,15 +58,16 @@
 
 
 
-<meta name="description" content="为者常成，行者常至">
-<meta property="og:type" content="website">
-<meta property="og:title" content="windhike">
-<meta property="og:url" content="http://www.windhike.cn/tags/filter/index.html">
+<meta name="description" content="前面按分类介绍了各种操作符，这一节来探究下一些有用的辅助操作符。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rxJava之utility有用的辅助操作符">
+<meta property="og:url" content="http://www.windhike.cn/2016/12/04/rx-utility/index.html">
 <meta property="og:site_name" content="windhike">
-<meta property="og:description" content="为者常成，行者常至">
+<meta property="og:description" content="前面按分类介绍了各种操作符，这一节来探究下一些有用的辅助操作符。">
+<meta property="og:updated_time" content="2016-12-07T12:57:09.076Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="windhike">
-<meta name="twitter:description" content="为者常成，行者常至">
+<meta name="twitter:title" content="rxJava之utility有用的辅助操作符">
+<meta name="twitter:description" content="前面按分类介绍了各种操作符，这一节来探究下一些有用的辅助操作符。">
 
 
 
@@ -88,10 +88,10 @@
 
 
 
-  <link rel="canonical" href="http://www.windhike.cn/tags/filter/"/>
+  <link rel="canonical" href="http://www.windhike.cn/2016/12/04/rx-utility/"/>
 
 
-  <title> 标签: filter | windhike </title>
+  <title> rxJava之utility有用的辅助操作符 | windhike </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -122,7 +122,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -210,46 +210,205 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        filter
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                rxJava之utility有用的辅助操作符
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-04T22:34:39+08:00" content="2016-12-04">
+              2016-12-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/04/rx-utility/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/04/rx-utility/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/04/rx-utility/" class="leancloud_visitors" data-flag-title="rxJava之utility有用的辅助操作符">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>前面按分类介绍了各种操作符，这一节来探究下一些有用的辅助操作符。<br><a id="more"></a></p>
+<h4 id="delay和delaySubscription"><a href="#delay和delaySubscription" class="headerlink" title="delay和delaySubscription"></a>delay和delaySubscription</h4><ul>
+<li>delay让数据发射延迟</li>
+<li>delaySubscription让注册subscriber延迟注册</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Observable.just(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;)</div><div class="line">//    .delay(3, TimeUnit.SECONDS)</div><div class="line">//    .delay(3,TimeUnit.SECONDS,Schedulers.immediate())</div><div class="line">      .delay(3,TimeUnit.SECONDS,Schedulers.trampoline())</div><div class="line">//    .delaySubscription(2,TimeUnit.SECONDS,Schedulers.immediate())</div></pre></td></tr></table></figure>
+<p><strong>delay这里有点奇怪还不知道原理，知道的朋友可以在下面评论交流下。<br>默认是在Schedulers.computation()调度器下，经java测试之在上面两种调度器下面工作才能达到delay的效果，否则subscriber里面的代码都无法执行,Why?</strong></p>
+<h4 id="do"><a href="#do" class="headerlink" title="do"></a>do</h4><p>doxxx主要用于回调</p>
+<ul>
+<li>doOnEach</li>
+<li>doOnNext</li>
+<li>doOnSubscribe和doOnUnSubscribe则会在Subscriber进行订阅和反订阅的时候触发回调。当一个Observable通过OnError或者OnCompleted结束的时候，会反订阅所有的Subscriber。</li>
+<li>doOnError</li>
+<li>doOnCompleted</li>
+<li>doOnTerminate会在Observable结束前触发回调，无论是正常还是异常终止</li>
+<li>finallyDo(<strong>已过期使用doAfterTerminate替换</strong>)会在Observable结束后触发回调，无论是正常还是异常终止。</li>
+</ul>
+<h4 id="meterialize和deMeterialize"><a href="#meterialize和deMeterialize" class="headerlink" title="meterialize和deMeterialize"></a>meterialize和deMeterialize</h4><p> meterialize操作符将OnNext/OnError/OnComplete都转化为一个Notification对象并按照原来的顺序发射出来，而deMeterialize则是执行相反的过程。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Observable.just(1,2,3)</div><div class="line">               .materialize()</div><div class="line">               .subscribe(new Action1&lt;Notification&lt;Integer&gt;&gt;() &#123;</div><div class="line">                   @Override</div><div class="line">                   public void call(Notification&lt;Integer&gt; integerNotification) &#123;</div><div class="line"></div><div class="line">                   &#125;</div><div class="line">               &#125;);</div></pre></td></tr></table></figure>
+<p> 其实就是将源Observable<integer>转化为了Observable<notification<integer>&gt;,<strong>注意onError或者onCompleted也作为Notification数据加在最后面。</strong></notification<integer></integer></p>
+<h4 id="timeInterval和timeStamp"><a href="#timeInterval和timeStamp" class="headerlink" title="timeInterval和timeStamp"></a>timeInterval和timeStamp</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Observable.just(1,2,3)</div><div class="line">         .timestamp()</div><div class="line">         .subscribe(new Action1&lt;Timestamped&lt;Integer&gt;&gt;() &#123;</div><div class="line">             @Override</div><div class="line">             public void call(Timestamped&lt;Integer&gt; integerTimestamped) &#123;</div><div class="line"></div><div class="line">             &#125;</div><div class="line">         &#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li><p>timeStamp则是封装来时间戳和源数据.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Observable.just(1,2,3)</div><div class="line">  .timeInterval()</div><div class="line">  .subscribe(new Action1&lt;TimeInterval&lt;Integer&gt;&gt;() &#123;</div><div class="line">      @Override</div><div class="line">      public void call(TimeInterval&lt;Integer&gt; interval) &#123;</div><div class="line">          print(&quot;===&quot;+interval.getValue()+&quot;----&quot;+interval.getIntervalInMilliseconds());</div><div class="line">      &#125;</div><div class="line">  &#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>timeInterval将Observable<integer>转化为Observable<timeinterval<integer>&gt;,是对源Observable发射数据和注册到发射第一个数据时间间隔或数据发射之间时间间隔的简单封装。</timeinterval<integer></integer></p>
+</li>
+</ul>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/11/25/rx-filter/" itemprop="url">
-              
-                <span itemprop="name">rxJava 之filter</span>
-              
-            </a>
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/qrcode_wechat.jpg" alt="windhike wechat" style="width: 200px; max-width: 100%;"/>
+    <div>关注我的公众号，每周推送更多干货</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>欣赏此文？求鼓励，求支持！</div>
+  <!--  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>-->
+    <div id="QR" style="display: block;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="https://mobilecodec.alipay.com/show.htm?code=aex05174te1n021xucsfnfd&picSize=430" alt="windhike Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-25T12:38:21+08:00"
-              content="2016-11-25" >
-          11-25
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/rxJava/" rel="tag">#rxJava</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/01/rx-error/" rel="next" title="rxJava之错误处理相关">
+                <i class="fa fa-chevron-left"></i> rxJava之错误处理相关
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -257,6 +416,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/04/rx-utility/"
+           data-title="rxJava之utility有用的辅助操作符" data-url="http://www.windhike.cn/2016/12/04/rx-utility/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -276,8 +443,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/face.jpg"
@@ -288,7 +464,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -305,7 +481,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -361,6 +537,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#delay和delaySubscription"><span class="nav-number">1.</span> <span class="nav-text">delay和delaySubscription</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#do"><span class="nav-number">2.</span> <span class="nav-text">do</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#meterialize和deMeterialize"><span class="nav-number">3.</span> <span class="nav-text">meterialize和deMeterialize</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#timeInterval和timeStamp"><span class="nav-number">4.</span> <span class="nav-text">timeInterval和timeStamp</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -463,6 +650,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

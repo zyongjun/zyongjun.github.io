@@ -2,30 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.windhike.cn/2016/09/18/retrofit/</loc>
+    
+    <lastmod>2016-12-07T13:01:13.139Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.windhike.cn/2016/11/27/rx-combining/</loc>
     
-    <lastmod>2016-12-01T05:31:46.824Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.windhike.cn/2016/12/01/rx-error/</loc>
-    
-    <lastmod>2016-12-01T05:31:46.824Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.windhike.cn/2016/10/25/rx-map/</loc>
-    
-    <lastmod>2016-11-29T05:12:47.919Z</lastmod>
+    <lastmod>2016-12-07T13:01:10.060Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.windhike.cn/2016/11/25/rx-filter/</loc>
     
-    <lastmod>2016-11-29T05:12:47.918Z</lastmod>
+    <lastmod>2016-12-07T13:00:32.492Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.windhike.cn/2016/12/01/rx-error/</loc>
+    
+    <lastmod>2016-12-07T13:00:24.916Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.windhike.cn/2016/10/25/rxjava/</loc>
+    
+    <lastmod>2016-12-07T12:58:13.284Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.windhike.cn/2016/12/04/rx-utility/</loc>
+    
+    <lastmod>2016-12-07T12:57:09.076Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.windhike.cn/2016/10/25/rx-map/</loc>
+    
+    <lastmod>2016-12-07T12:56:08.371Z</lastmod>
     
   </url>
   
@@ -33,13 +54,6 @@
     <loc>http://www.windhike.cn/2016/09/20/channel/</loc>
     
     <lastmod>2016-11-29T05:12:47.855Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.windhike.cn/2016/10/25/rxjava/</loc>
-    
-    <lastmod>2016-11-23T10:52:02.492Z</lastmod>
     
   </url>
   
@@ -61,13 +75,6 @@
     <loc>http://www.windhike.cn/2016/09/12/unittest1/</loc>
     
     <lastmod>2016-09-19T01:00:41.794Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.windhike.cn/2016/09/18/retrofit/</loc>
-    
-    <lastmod>2016-09-19T01:00:41.793Z</lastmod>
     
   </url>
   

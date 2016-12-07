@@ -43,8 +43,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="rxJava" />
-
+  <meta name="keywords" content="rxJava, rxAndroid, 错误处理, windhike" />
 
 
 
@@ -61,13 +60,13 @@
 
 <meta name="description" content="rxjava 提供了丰富的错误处理丰富，根据需要可以统一处理错误。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="rx之错误处理">
+<meta property="og:title" content="rxJava之错误处理相关">
 <meta property="og:url" content="http://www.windhike.cn/2016/12/01/rx-error/index.html">
 <meta property="og:site_name" content="windhike">
 <meta property="og:description" content="rxjava 提供了丰富的错误处理丰富，根据需要可以统一处理错误。">
-<meta property="og:updated_time" content="2016-12-01T05:31:46.824Z">
+<meta property="og:updated_time" content="2016-12-07T13:00:24.916Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="rx之错误处理">
+<meta name="twitter:title" content="rxJava之错误处理相关">
 <meta name="twitter:description" content="rxjava 提供了丰富的错误处理丰富，根据需要可以统一处理错误。">
 
 
@@ -92,7 +91,7 @@
   <link rel="canonical" href="http://www.windhike.cn/2016/12/01/rx-error/"/>
 
 
-  <title> rx之错误处理 | windhike </title>
+  <title> rxJava之错误处理相关 | windhike </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -232,7 +231,7 @@
             
             
               
-                rx之错误处理
+                rxJava之错误处理相关
               
             
           </h1>
@@ -285,7 +284,7 @@
 
           
           
-             <span id="/2016/12/01/rx-error/" class="leancloud_visitors" data-flag-title="rx之错误处理">
+             <span id="/2016/12/01/rx-error/" class="leancloud_visitors" data-flag-title="rxJava之错误处理相关">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -308,11 +307,12 @@
 
       
         <p>rxjava 提供了丰富的错误处理丰富，根据需要可以统一处理错误。<br><a id="more"></a></p>
-<h4 id="catch"><a href="#catch" class="headerlink" title="catch"></a>catch</h4><p>这里先生成一个产生exception的Observable<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">private Observable&lt;Integer&gt; getErrorObservable() &#123;</div><div class="line">        return Observable.create(new Observable.OnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public void call(Subscriber&lt;? super Integer&gt; subscriber) &#123;</div><div class="line">                for (int i = 1;i&lt;6;i++) &#123;</div><div class="line">                    if (i!=2&amp;&amp;i != 4) &#123;</div><div class="line">                        subscriber.onNext(i);</div><div class="line">                    &#125; else &#123;</div><div class="line">                        subscriber.onError(new Throwable(&quot;on error happened&quot;));</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<h4 id="catch"><a href="#catch" class="headerlink" title="catch"></a>catch</h4><p>这里先生成一个产生exception的Observable</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">private Observable&lt;Integer&gt; getErrorObservable() &#123;</div><div class="line">        return Observable.create(new Observable.OnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public void call(Subscriber&lt;? super Integer&gt; subscriber) &#123;</div><div class="line">                for (int i = 1;i&lt;6;i++) &#123;</div><div class="line">                    if (i!=2&amp;&amp;i != 4) &#123;</div><div class="line">                        subscriber.onNext(i);</div><div class="line">                    &#125; else &#123;</div><div class="line">                        subscriber.onError(new Throwable(&quot;on error happened&quot;));</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <ul>
-<li>onErrorReturn<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">getErrorObservable().onErrorReturn(new Func1&lt;Throwable, Integer&gt;() &#123;</div><div class="line">           @Override</div><div class="line">           public Integer call(Throwable throwable) &#123;</div><div class="line">               return 999;</div><div class="line">           &#125;</div><div class="line">       &#125;)</div></pre></td></tr></table></figure>
-</li>
+<li>onErrorReturn</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">getErrorObservable().onErrorReturn(new Func1&lt;Throwable, Integer&gt;() &#123;</div><div class="line">           @Override</div><div class="line">           public Integer call(Throwable throwable) &#123;</div><div class="line">               return 999;</div><div class="line">           &#125;</div><div class="line">       &#125;)</div></pre></td></tr></table></figure>
 <p>当错误发生的时候，会走onErrorReturn的call，使用返回的数据替换error的这次发射结果,然后马上终止，走onCompleted.</p>
 <ul>
 <li>onErrorResumeNext</li>
@@ -320,10 +320,33 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">getErrorObservable()</div><div class="line">//                .onErrorResumeNext(Observable.just(1,2,3))</div><div class="line">        .onErrorResumeNext(new Func1&lt;Throwable, Observable&lt;? extends Integer&gt;&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public Observable&lt;? extends Integer&gt; call(Throwable throwable) &#123;</div><div class="line">                return Observable.just(1,2,3);</div><div class="line">            &#125;</div><div class="line">        &#125;)</div></pre></td></tr></table></figure>
 <p>onErrorResumeNext:可以接收一个Observable或Func1,当exception发生的时候，会使用这个Observable替换源Observable继续发射数据。</p>
 <ul>
-<li>onExceptionResumeNext<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Observable.create(new Observable.OnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public void call(Subscriber&lt;? super Integer&gt; subscriber) &#123;</div><div class="line">                for (int i = 1;i&lt;6;i++) &#123;</div><div class="line">                    if (i == 3) &#123;</div><div class="line">                        subscriber.onError(new Throwable(&quot;on error happened&quot;));</div><div class="line">                    &#125; else if(i==2)&#123;</div><div class="line">                        subscriber.onError(new Exception(&quot;an exception happend&quot;));</div><div class="line">                    &#125;else&#123;</div><div class="line">                        subscriber.onNext(i);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;).onExceptionResumeNext(Observable.just(10,11))</div></pre></td></tr></table></figure>
-</li>
+<li>onExceptionResumeNext</li>
 </ul>
-<p>onExceptionResumeNext接收一备用的Observable,与onErrorResumeNext类似，不过只有error类型是Exception的时候才会使用备用Observable，其他错误类型如Throwable则会走subscriber的onError,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Observable.create(new Observable.OnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public void call(Subscriber&lt;? super Integer&gt; subscriber) &#123;</div><div class="line">                for (int i = 1;i&lt;6;i++) &#123;</div><div class="line">                    if (i == 3) &#123;</div><div class="line">                        subscriber.onError(new Throwable(&quot;on error happened&quot;));</div><div class="line">                    &#125; else if(i==2)&#123;</div><div class="line">                        subscriber.onError(new Exception(&quot;an exception happend&quot;));</div><div class="line">                    &#125;else&#123;</div><div class="line">                        subscriber.onNext(i);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;).onExceptionResumeNext(Observable.just(10,11))</div></pre></td></tr></table></figure>
+<p>onExceptionResumeNext接收一备用的Observable,与onErrorResumeNext类似，不过只有error类型是Exception的时候才会使用备用Observable，其他错误类型如Throwable则会走subscriber的onError.</p>
+<h4 id="retry"><a href="#retry" class="headerlink" title="retry"></a>retry</h4><ul>
+<li>retry</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">getErrorObservable().retry(2)</div><div class="line">                .subscribe(getIntegerSubscriber());</div></pre></td></tr></table></figure>
+<p>错误发生时会重新发射指定次数，最后还错误就返回给subscriber</p>
+<ul>
+<li>retryWhen</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">getErrorObservable().retryWhen(new Func1&lt;Observable&lt;? extends Throwable&gt;, Observable&lt;?&gt;&gt;() &#123;</div><div class="line">    @Override</div><div class="line">    public Observable&lt;?&gt; call(Observable&lt;? extends Throwable&gt; observable) &#123;</div><div class="line">        return observable.flatMap(new Func1&lt;Throwable, Observable&lt;?&gt;&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public Observable&lt;?&gt; call(Throwable throwable) &#123;</div><div class="line">                // For IOExceptions, we  retry</div><div class="line">                if (throwable instanceof IOException) &#123;</div><div class="line">                    return Observable.just(null);</div><div class="line">                &#125;</div><div class="line">                // For anything else, don&apos;t retry</div><div class="line">                return Observable.error(throwable);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;).subscribe(getIntegerSubscriber());</div></pre></td></tr></table></figure>
+<p>这里可以自定义重试逻辑。<br>注意:</p>
+<ul>
+<li>error发生时会走func1的call,只能通过接收的observable变换来retry,否则链式会打断走complete.</li>
+<li>限制重试次数可以通过zipWith:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">source.retryWhen(new Func1&lt;Observable&lt;? extends Throwable&gt;, Observable&lt;?&gt;&gt;() &#123;</div><div class="line">              @Override public Observable&lt;?&gt; call(Observable&lt;? extends Throwable&gt; errors) &#123;</div><div class="line"></div><div class="line">                return errors.zipWith(Observable.range(1, 3), new Func2&lt;Throwable, Integer, Integer&gt;() &#123;</div><div class="line">                  @Override public Integer call(Throwable throwable, Integer i) &#123;</div><div class="line"></div><div class="line">                    return i;</div><div class="line">                  &#125;</div><div class="line">                &#125;);</div><div class="line">              &#125;</div><div class="line">            &#125;)</div></pre></td></tr></table></figure>
+<ul>
+<li>可以通过flatmap对重试做延迟等处理</li>
+<li>zipWith+flatmap可以限制次数和延迟，以及重试指定的次数做处理</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">source.retryWhen(new Func1&lt;Observable&lt;? extends Throwable&gt;, Observable&lt;?&gt;&gt;() &#123;</div><div class="line">              @Override public Observable&lt;?&gt; call(Observable&lt;? extends Throwable&gt; errors) &#123;</div><div class="line"></div><div class="line">                return errors.zipWith(Observable.range(1, 3), new Func2&lt;Throwable, Integer, Integer&gt;() &#123;</div><div class="line">                  @Override public Integer call(Throwable throwable, Integer i) &#123;</div><div class="line"></div><div class="line">                    return i;</div><div class="line">                  &#125;</div><div class="line">                &#125;).flatMap(new Func1&lt;Integer, Observable&lt;? extends Long&gt;&gt;() &#123;</div><div class="line">                  @Override public Observable&lt;? extends Long&gt; call(Integer retryCount) &#123;</div><div class="line"></div><div class="line">                    return Observable.timer((long) Math.pow(5, retryCount), TimeUnit.SECONDS);</div><div class="line">                  &#125;</div><div class="line">                &#125;);</div><div class="line">              &#125;</div><div class="line">            &#125;)</div></pre></td></tr></table></figure>
+<ul>
+<li>与repeatWith要区分开，repeatWith是针对事件complete，retryWhen针对error发生的事件。具体可以查看这篇<a href="http://www.open-open.com/lib/view/open1454895890823.html" target="_blank" rel="external">译文</a></li>
+</ul>
 
       
     </div>
@@ -369,8 +392,6 @@
           
             <a href="/tags/rxJava/" rel="tag">#rxJava</a>
           
-            <a href="/tags/rxAndroid/" rel="tag">#rxAndroid</a>
-          
         </div>
       
 
@@ -385,6 +406,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/04/rx-utility/" rel="prev" title="rxJava之utility有用的辅助操作符">
+                rxJava之utility有用的辅助操作符 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -411,7 +436,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/12/01/rx-error/"
-           data-title="rx之错误处理" data-url="http://www.windhike.cn/2016/12/01/rx-error/">
+           data-title="rxJava之错误处理相关" data-url="http://www.windhike.cn/2016/12/01/rx-error/">
       </div>
     
   </div>
@@ -456,7 +481,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -473,7 +498,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -536,7 +561,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#catch"><span class="nav-number">1.</span> <span class="nav-text">catch</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#catch"><span class="nav-number">1.</span> <span class="nav-text">catch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#retry"><span class="nav-number">2.</span> <span class="nav-text">retry</span></a></li></ol></div>
             
           </div>
         </section>
