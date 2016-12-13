@@ -64,7 +64,7 @@
 <meta property="og:url" content="http://www.windhike.cn/2016/12/04/rx-utility/index.html">
 <meta property="og:site_name" content="windhike">
 <meta property="og:description" content="前面按分类介绍了各种操作符，这一节来探究下一些有用的辅助操作符。">
-<meta property="og:updated_time" content="2016-12-07T12:57:09.076Z">
+<meta property="og:updated_time" content="2016-12-13T06:29:53.646Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rxJava之utility有用的辅助操作符">
 <meta name="twitter:description" content="前面按分类介绍了各种操作符，这一节来探究下一些有用的辅助操作符。">
@@ -317,8 +317,11 @@
 <ul>
 <li>doOnEach</li>
 <li>doOnNext</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.可以用于调试</div><div class="line">2.用于保存和缓存网络结果。不过会等待完成后才会调用onNext,如果要不延迟后面执行可以使用非阻塞IO操作，可以参考[非阻塞IO操作](https://github.com/yuxingxin/RxJava-Essentials-CN/blob/master/chapter7/nonblocking_io_operations.md)</div><div class="line"> Schedulers.io().createWorker().schedule(() -&gt; &#123;&#125;</div></pre></td></tr></table></figure>
+<ul>
 <li>doOnSubscribe和doOnUnSubscribe则会在Subscriber进行订阅和反订阅的时候触发回调。当一个Observable通过OnError或者OnCompleted结束的时候，会反订阅所有的Subscriber。</li>
-<li>doOnError</li>
+<li>doOnError<br>可以用于flatMap里面处理错误</li>
 <li>doOnCompleted</li>
 <li>doOnTerminate会在Observable结束前触发回调，无论是正常还是异常终止</li>
 <li>finallyDo(<strong>已过期使用doAfterTerminate替换</strong>)会在Observable结束后触发回调，无论是正常还是异常终止。</li>

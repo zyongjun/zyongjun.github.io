@@ -4,6 +4,66 @@
 
     
   <url>
+    <loc>http://www.windhike.cn/2016/12/04/rx-utility/</loc>
+    <lastmod>2016-12-13T06:29:53.646Z</lastmod>
+    <data>
+        <display>
+        <title>rxJava之utility有用的辅助操作符</title>
+        <pubTime>2016-12-04T14:34:39.000Z</pubTime>
+        
+        <tag>rxJava</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://www.windhike.cn/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.windhike.cn/2016/11/25/rx-filter/</loc>
+    <lastmod>2016-12-13T06:28:06.323Z</lastmod>
+    <data>
+        <display>
+        <title>rxJava 之filter</title>
+        <pubTime>2016-11-25T04:38:21.000Z</pubTime>
+        
+        <tag>rxJava</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://www.windhike.cn/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.windhike.cn/2016/12/01/rx-error/</loc>
+    <lastmod>2016-12-13T06:28:02.539Z</lastmod>
+    <data>
+        <display>
+        <title>rxJava之错误处理相关</title>
+        <pubTime>2016-12-01T03:18:26.000Z</pubTime>
+        
+        <tag>rxJava</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://www.windhike.cn/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.windhike.cn/2016/09/18/retrofit/</loc>
     <lastmod>2016-12-07T13:01:13.139Z</lastmod>
     <data>
@@ -44,72 +104,12 @@
 
     
   <url>
-    <loc>http://www.windhike.cn/2016/11/25/rx-filter/</loc>
-    <lastmod>2016-12-07T13:00:32.492Z</lastmod>
-    <data>
-        <display>
-        <title>rxJava 之filter</title>
-        <pubTime>2016-11-25T04:38:21.000Z</pubTime>
-        
-        <tag>rxJava</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://www.windhike.cn/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.windhike.cn/2016/12/01/rx-error/</loc>
-    <lastmod>2016-12-07T13:00:24.916Z</lastmod>
-    <data>
-        <display>
-        <title>rxJava之错误处理相关</title>
-        <pubTime>2016-12-01T03:18:26.000Z</pubTime>
-        
-        <tag>rxJava</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://www.windhike.cn/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.windhike.cn/2016/10/25/rxjava/</loc>
     <lastmod>2016-12-07T12:58:13.284Z</lastmod>
     <data>
         <display>
         <title>rxjava 之创建Observable</title>
         <pubTime>2016-10-25T15:59:15.000Z</pubTime>
-        
-        <tag>rxJava</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://www.windhike.cn/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.windhike.cn/2016/12/04/rx-utility/</loc>
-    <lastmod>2016-12-07T12:57:09.076Z</lastmod>
-    <data>
-        <display>
-        <title>rxJava之utility有用的辅助操作符</title>
-        <pubTime>2016-12-04T14:34:39.000Z</pubTime>
         
         <tag>rxJava</tag>
          
